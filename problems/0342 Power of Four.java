@@ -27,11 +27,26 @@ Constraints:
 Follow up: Could you solve it without loops/recursion?
 */
 
+//
 class Solution {
     public boolean isPowerOfFour(int n) {
         if(n==0) return false;
         if(n == 1) return true;
        double num = (Math.log(n)/ Math.log(4));
         return Math.floor(num) == Math.ceil(num);
+    }
+}
+
+
+//
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        if(n==0) return false;
+        if(n == 1) return true;
+        while(true){
+            if(n % 4 != 0) break;;
+            n /= 4;
+        }
+        return n == 1;
     }
 }
