@@ -98,3 +98,28 @@ class Solution {
         return score;
     }
 }
+
+
+//
+
+class Solution {
+    public int bagOfTokensScore(int[] arr, int power) {
+        int score = 0;
+        int max = 0;
+        Arrays.sort(arr);
+        for(int i=0,j=arr.length; i<j;){
+            if(arr[i] <= power){
+                power -= arr[i];
+                score++;
+                i++;
+            }else if(score > 0){
+                j--;
+                if(i>=j) break;
+                power += arr[j];
+                score--;
+            }else break;
+         if(score > max) max = score;   
+        }
+        return max;
+    }
+}
