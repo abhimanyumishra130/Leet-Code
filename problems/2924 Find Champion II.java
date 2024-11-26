@@ -28,6 +28,8 @@ The input is generated such that if team a is stronger than team b, team b is no
 The input is generated such that if team a is stronger than team b and team b is stronger than team c, then team a is stronger than team c.
 */
 
+//Solution-1
+
 class Solution {
     public int findChampion(int n, int[][] edges) {
         if(n==1) return 0;
@@ -67,4 +69,21 @@ class Solution {
         return champ;
     }
 }
-Footer
+
+
+// Solution-2
+class Solution {
+    public int findChampion(int n, int[][] edges) {
+        int[] teams = new int[n];
+        for(int i=0; i<edges.length; i++){
+            teams[edges[i][1]]++;
+        }
+        
+        int res = -1;
+        for(int i=0; i<n; i++){
+            if(teams[i] == 0 && res!=-1) return -1;
+            else if(teams[i] == 0) res = i;
+        }
+        return res;
+    }
+}
