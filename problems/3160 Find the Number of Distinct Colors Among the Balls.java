@@ -62,14 +62,12 @@ class Solution {
             int upColor = queries[i][1];
             if(num.containsKey(n)){
                 int curColor = num.get(n);
-                if(color.containsKey(curColor)){
-                    if(color.get(curColor)>1) color.put(curColor,color.get(curColor)-1);
-                    else color.remove(curColor);
-                }
+                int freq = color.get(curColor) - 1;
+                if(freq > 0) color.put(curColor,freq);
+                else color.remove(curColor);
             }
             num.put(n, upColor);
             color.put(upColor, color.getOrDefault(upColor,0)+1);
-            // System.out.println(color);
             res[i] = color.size();
         }
         return res;
