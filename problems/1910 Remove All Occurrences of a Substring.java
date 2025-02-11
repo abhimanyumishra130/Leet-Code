@@ -46,3 +46,17 @@ class Solution {
         return s;
     }
 }
+
+
+//
+
+class Solution {
+    public String removeOccurrences(String s, String part) {
+        StringBuilder str = new StringBuilder(s);
+        while(str.indexOf(part) != -1){
+            int ind = str.indexOf(part);
+            str.delete(ind, ind+part.length());
+        }
+        return str.toString();
+    }
+}
